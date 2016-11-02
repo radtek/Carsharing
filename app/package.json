@@ -1,0 +1,60 @@
+{
+  "name": "MobileDemo",
+  "version": "0.0.1",
+  "private": true,
+  "entry": {
+    "index": "./index.web.js"
+  },
+  "scripts": {
+    "build": "atool-build",
+    "lint": "eslint --ext .js src/",
+    "start": "dora --plugins \"proxy,webpack,livereload?enableJs=false&injectHost=127.0.0.1\"",
+    "ios": "react-native run-ios",
+    "android": "react-native run-android"
+  },
+  "devDependencies": {
+    "antd": "1.x",
+    "antd-mobile": "^0.9.0",
+    "atool-build": "^0.8.0",
+    "babel-eslint": "^6.0.2",
+    "babel-plugin-antd": "^0.4.0",
+    "babel-plugin-transform-runtime": "^6.8.0",
+    "dora": "0.3.x",
+    "dora-plugin-livereload": "^0.5.0",
+    "dora-plugin-proxy": "^0.7.0",
+    "dora-plugin-webpack": "0.6.x",
+    "eslint": "^2.12.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.1",
+    "eslint-plugin-jsx-a11y": "^1.4.2",
+    "eslint-plugin-react": "^5.1.1",
+    "expect": "^1.20.1",
+    "jquery": "^3.1.1",
+    "pre-commit": "1.x",
+    "react-github-button": "^0.1.9",
+    "react-intl": "^2.0.1",
+    "redux-devtools": "^3.3.1"
+  },
+  "dependencies": {
+    "ajax": "0.0.4",
+    "antd-mobile": "1.0.0-alpha.2",
+    "babel-runtime": "6.x",
+    "classnames": "~2.2.1",
+    "css-vendor": "~0.3.4",
+    "jquery": "^3.1.1",
+    "moment": "^2.15.1",
+    "rc-form": "^0.17.2",
+    "react": "15.2.1",
+    "react-dom": "15.2.1",
+    "react-hammerjs": "^0.5.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.6.1",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0",
+    "request": "^2.75.0",
+    "site": "^2.14.8"
+  },
+  "pre-commit": [
+    "lint"
+  ]
+}

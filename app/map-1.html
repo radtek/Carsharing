@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html style="height:100%;"><head><link rel="stylesheet" type="text/css" href="http://webapi.amap.com/theme/v1.3/style1.3.19.css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, minimal-ui">
+<title>高德地图JavaScript API</title> 
+<style type="text/css" rel="stylesheet">
+	header{position:absolute;height:60px;top:0;width:100%;background-color:#F4F4F4;z-index:999;text-align:center;line-height:60px;color:#666666;font-weight:bold;border-bottom:1px solid #BBBBBB;}
+	header div:nth-child(1){position:absolute;z-index:1000;width:40px;cursor:pointer;}
+	header div:nth-child(1) img{width:40px;height:40px;margin-left:3px;margin-top:10px;}
+	header div:nth-child(2){width:100%}
+	html body{height:100%;margin:0;font-family: "微软雅黑";}
+	#map{position:absolute;top:60px;width:100%;font-family: "微软雅黑";}
+	.float_div{cursor:pointer;border-radius:3px;text-align:center;line-height:50px;background-color:#008CFF;width:60px;height:45px;position:absolute;z-index:888;right:5px;color: #fff;}
+	#localtion{bottom:80px;}
+	#panner{background-color:#272822;opacity:0.8;width:100%;height:140px;position:absolute;bottom:0;z-index:17;font-size:12px;color:#fff;}
+	#visit{bottom:20px;}
+</style><style type="text/css">.amap-container{cursor:url(http://webapi.amap.com/theme/v1.3/openhand.cur),default;}.amap-drag{cursor:url(http://webapi.amap.com/theme/v1.3/closedhand.cur),default;}</style></head>
+
+<body>
+	<header>
+		<div>
+			
+		</div>
+		<div>
+			<span>位置定位</span>
+		</div>
+	</header>
+	
+	<div class="float_div" id="localtion">
+		定位
+	</div>
+	<div class="float_div" id="visit">
+		监控
+	</div>
+	<div id="panner">
+		<div id="r_title"><b>定位结果:</b></div>
+	    <div id="result"></div>
+	</div>
+	
+	<div id="map" class="amap-container" style="height: 536px;"><object style="display: block; position: absolute; top: 0; left: 0; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;" type="text/html" data="about:blank"></object><div class="amap-maps"><div class="amap-drags"><div class="amap-layers" style="transform: translateZ(0px);"><div class="amap-layer" style="position: absolute; z-index: 0; top: 268px; left: 207px;"><canvas height="512" width="512" style="position: absolute; top: 116px; left: 57px; width: 256px; height: 256px; z-index: 8;"></canvas><canvas height="512" width="512" style="position: absolute; top: -140px; left: 57px; width: 256px; height: 256px; z-index: 8;"></canvas><canvas height="512" width="512" style="position: absolute; top: -396px; left: 57px; width: 256px; height: 256px; z-index: 8;"></canvas><canvas height="512" width="512" style="position: absolute; top: 116px; left: -199px; width: 256px; height: 256px; z-index: 8;"></canvas><canvas height="512" width="512" style="position: absolute; top: -140px; left: -199px; width: 256px; height: 256px; z-index: 8;"></canvas><canvas height="512" width="512" style="position: absolute; top: -396px; left: -199px; width: 256px; height: 256px; z-index: 8;"></canvas><canvas height="512" width="512" style="position: absolute; top: 116px; left: -455px; width: 256px; height: 256px; z-index: 8;"></canvas><canvas height="512" width="512" style="position: absolute; top: -140px; left: -455px; width: 256px; height: 256px; z-index: 8;"></canvas><canvas height="512" width="512" style="position: absolute; top: -396px; left: -455px; width: 256px; height: 256px; z-index: 8;"></canvas></div><canvas width="828" height="1072" style="position: absolute; z-index: 1; height: 536px; width: 414px; top: 0px; left: 0px;"></canvas><div style="position: absolute; z-index: 120; top: 268px; left: 207px;"></div><canvas width="828" height="1072" style="position: absolute; z-index: 99; height: 536px; width: 414px; top: 0px; left: 0px;"></canvas></div><div class="amap-overlays"></div></div></div><div style="display: none;"></div><div class="amap-controls"><div class="amap-geolocation-con" style="position: absolute; z-index: 9999; left: 10px; bottom: 20px;"><div class="amap-geo"></div></div></div><a class="amap-logo"><img src="http://webapi.amap.com/theme/v1.3/mapinfo_05.png"></a><div class="amap-copyright" style="display: none;"><!--v1.3.19--> © 2016 AutoNavi <span class="amap-mcode">- GS(2016)710号</span></div></div>	
+
+<script language="javascript" src="http://webapi.amap.com/maps?v=1.3&key=2b40aa093de0a6e73f1e13b46baa69ac"></script>
+<script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
+<script type="text/javascript">
+	(function (){
+		var mapHeight = document.body.clientHeight - 200;
+		document.getElementById('map').style.height = mapHeight + 'px';
+
+		var params =  {
+			resizeEnable: true,
+			center: [121.425725, 31.184557],//地图中心点
+			showCircle: true,
+			zoom: 17 //地图显示的缩放级别
+    	};
+		var map = new AMap.Map('map',params), geolocation = null, result = document.getElementById('result');
+		map.plugin('AMap.Geolocation', function () {
+			geolocation = new AMap.Geolocation({
+				enableHighAccuracy: true,//是否使用高精度定位，默认:true
+				timeout: 10000,          //超过10秒后停止定位，默认：无穷大
+				maximumAge: 0,           //定位结果缓存0毫秒，默认：0
+				convert: true,           //自动偏移坐标，偏移后的坐标为高德坐标，默认：true
+				showButton: true,        //显示定位按钮，默认：true
+				buttonPosition: 'LB',    //定位按钮停靠位置，默认：'LB'，左下角
+				buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+				showMarker: true,        //定位成功后在定位到的位置显示点标记，默认：true
+				showCircle: true,        //定位成功后用圆圈表示定位精度范围，默认：true
+				panToLocation: true,     //定位成功后将定位到的位置作为地图中心点，默认：true
+				zoomToAccuracy:true      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+			});
+	        map.addControl(geolocation);
+			AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
+			AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
+		});
+		
+		/*
+		 *获取当前位置信息
+		 */
+		function getCurrentPosition () {
+			geolocation.getCurrentPosition();
+		};
+		/*
+		 *监控当前位置并获取当前位置信息
+		 */
+		function watchPosition () {
+			geolocation.watchPosition();
+		};
+		/*
+		 *解析定位结果
+		 */
+		function onComplete (data) {
+			var str = '<p>定位成功</p>';
+			str += '<p>经度：' + data.position.getLng() + '</p>';
+			str += '<p>纬度：' + data.position.getLat() + '</p>'; 
+			str += '<p>精度：' + data.accuracy + ' 米</p>';
+			str += '<p>是否经过偏移：' + (data.isConverted ? '是' : '否') + '</p>';
+			result.innerHTML = str;
+		};
+		/*
+		 *解析定位错误信息
+		 */
+		function onError (data) {
+			var str = '<p>定位失败</p>';
+			str += '<p>错误信息：'
+			switch(data.info) {
+				case 'PERMISSION_DENIED':
+					str += '浏览器阻止了定位操作';
+					break;
+				case 'POSITION_UNAVAILBLE':
+					str += '无法获得当前位置';
+					break;
+				case 'TIMEOUT':
+					str += '定位超时';
+					break;
+				default:
+					str += '未知错误';
+					break;
+			}
+			str += '</p>';
+			result.innerHTML = str;
+		};
+		
+
+		 function addCloudLayer() {
+        	//加载云图层插件
+				map.plugin('AMap.CloudDataLayer', function() {
+				var layerOptions = {
+					query: {keywords: '车站'},
+					clickable: true
+				};
+				var cloudDataLayer = new AMap.CloudDataLayer('556fefb1e4b0ac5ece43fa24', layerOptions); //实例化云图层类
+
+				cloudDataLayer.setMap(map); //叠加云图层到地图
+				AMap.event.addListener(cloudDataLayer, 'click', function(result) {
+					var clouddata = result.data;
+					var photo = [];
+					if (clouddata._image[0]) {//如果有上传的图片
+						photo = ['<img width=240 height=100 src="' + clouddata._image[0]._preurl + '"><br>'];
+					}
+					var infoWindow = new AMap.InfoWindow({
+						content: "<font class='title'>" + clouddata._name + "</font><hr/>" + photo.join("") + "地址：" + clouddata._address + "<br />" + "创建时间：" + clouddata._createtime + "<br />" + "更新时间：" + clouddata._updatetime,
+						size: new AMap.Size(0, 0),
+						autoMove: true,
+						offset: new AMap.Pixel(0, -25)
+					});
+					infoWindow.open(map, clouddata._location);
+				});
+			});
+		}    
+
+		//getCurrentPosition();
+		addCloudLayer();
+		document.getElementById('visit').onclick = function(){
+			watchPosition();
+		};
+		
+	})();
+</script>
+						
+
+	</body></html>

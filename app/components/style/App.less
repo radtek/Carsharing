@@ -1,0 +1,115 @@
+@import "./Vars";
+
+body {
+  background: #fff;
+}
+
+.App-header {
+  background: white;
+  color: @main-color;
+  opacity: 0.8;
+  left: 0px;
+  /*
+  position: fixed;
+  top:0;
+  left: 0px;
+  z-index: 100;
+  width: 100%;
+  */
+
+  .am-navbar-left {
+    font-size: @font-size-4;
+  }
+
+  .am-navbar-right {
+    font-size: @font-size-4;
+  }
+
+  .am-navbar-title {
+    font-size: @font-size-5;
+    /*margin-left: -60px;*/
+  }
+}
+
+.select-back{
+  font-size: 18px;
+}
+
+.App-body, .am-tabbar .am-tabbar-content {
+  height: 100%;
+  padding-bottom: 30px;
+  overflow: scroll;
+}
+
+.am-tabbar {
+
+  .am-tabbar-tabs {
+    height: @tabbar-height;
+    padding-top: 0px;
+    position: fixed;
+    z-index: 100;
+    background-color: #EFEFEF;
+  }
+
+  font-size: @font-size-3;
+
+  .am-tabbar-tabs-item-icon {
+    height: @tabbar-height;
+    position: fixed;
+    padding-top: 1px;
+    margin-top: 1px;
+
+    .am-tabbar-tabs-item-image {
+      height: @tabbar-img-size;
+      width: @tabbar-img-size;
+      position: static;
+      padding-left: 25px;
+    }
+  }
+
+  .am-tabbar-tabs-item-title {
+    font-size: @font-size-3;
+    position: absolute;
+    padding-top: 6px;
+    padding-left: 30px;
+  }
+
+  .am-tabbar-tabs-item-badge {
+    .am-badge-text {
+      margin-bottom: -20px;
+    }
+  }
+  .am-badge-text {
+    font-size: 16px;
+    border-radius: 10px;
+    height: 16px;
+    padding: 0 6px 5px;
+    top: -30px;
+  }
+
+}
+
+.am-result {
+  .am-result-title, .am-result-message {
+    font-size: @font-size-2;
+  }
+}
+
+.am-list {
+
+  .am-list-body {
+    border-top: 1px solid #eee;
+  }
+
+  .am-list-item:last-child:after {
+    border-top: 0px solid #eee;
+    border-bottom: 1px solid #eee;
+  }
+
+  .am-list-item {
+    .am-list-item-middle .am-list-line:after {
+      border-bottom: 1px dashed #ddd;
+    }
+  }
+
+}

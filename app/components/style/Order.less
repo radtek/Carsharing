@@ -1,0 +1,293 @@
+@import "./Vars";
+
+.order-div{
+    position: absolute;
+    width: 100%;
+    border: 1px solid #eee;
+}
+
+.find-page, .rent-page{
+
+    background-color: #eee;
+    padding-bottom: 20px;
+    padding-top: 5px;
+    
+    .am-segment{
+        border-radius: 16px;
+        border-width: 1px;
+    }
+
+    .card-distance{
+        font-size: 12px;
+    }
+
+    .card-price{
+        float: right;
+        padding-right: 20px;
+    }
+
+    .am-segment-item{
+        font-size: @font-size-4;
+        padding: 10px 0;
+        width: 100px;
+    }
+
+    .travel-card{
+        background: white;
+        font-size: @font-size-4;
+        margin: 15px;
+
+        padding-bottom:5px;
+        .am-card-header{
+            margin-left: 10px;
+            font-size: @font-size-5;
+        
+            .am-card-header-content {
+                color: #666;
+                flex:2;
+                img{
+                    margin-top: -30px;
+                    width: 60px;
+                }
+            }
+        }
+        .am-card-header-extra{
+            flex:3;
+
+            .card-date{
+                display:  block;
+                font-size: @font-size-4;
+                color: #888;
+                margin-left: 15px;
+                text-align: left;
+                
+            }
+            .card-time{
+                display:  block;
+                font-size: 10px;
+                color: #999;
+                margin-top: -28px;
+                text-align: right;
+            }
+           
+        }
+
+        .am-card-body{
+            border-top: 1px dashed #ddd;
+            padding:5px 0px 5px 30px;
+        }
+
+    }
+
+    .all-order-card{
+        background: white;
+        font-size: @font-size-4;
+        margin: 6px;
+
+        padding-bottom:10px;
+        .am-card-header{
+            margin-left: 10px;
+            font-size: @font-size-4;
+
+            .am-card-header-content {
+                color: #666;
+                flex:3;
+                img{
+                    margin-top: -30px;
+                    width: 60px;
+                }
+            }
+        }
+        .am-card-header-extra{
+            flex:4;
+            margin-right: -20px;
+            .card-date{
+                display:  block;
+                font-size: @font-size-4;
+                color: #666;
+                margin-left: 6px;
+                text-align: right;
+
+            }
+            .card-time{
+                display:  block;
+                font-size: 10px;
+                color: #999;
+                margin-top: -28px;
+                text-align: right;
+            }
+
+        }
+
+        .am-card-body{
+            border-top: 1px dashed #ddd;
+            padding:5px 0px 5px 30px;
+        }
+
+    }
+
+
+    .card-addr{
+        color: #999;
+        font-size: @font-size-4;
+        line-height: 26px;
+
+        i{
+            margin-right: 20px;
+        }
+
+        .card-city{
+            color:@main-color;
+            border-radius: 15px;
+            border: 1px solid #ccc;
+            padding: 2px 5px;
+            font-size:  @font-size-2;
+            margin-top:-15px;
+        }
+
+        &.card-from{
+
+            i,.card-city{
+                color: green;
+            }
+        }
+
+        &.card-to{
+            i, .card-city{
+                color: red;
+            }
+        }
+    }
+
+    .am-card-footer{
+        color: #aaa;
+        font-size:  @font-size-2;
+        border-top: 1px dashed #ddd;
+        padding-top:10px;
+
+        .card-flag{
+            background-color: #FF9C34;
+            opacity: 0.8;
+            float: right;
+            width: 40px;
+            color:white;
+            border-radius: 15px;
+            padding: 3px 6px;
+            font-size:  @font-size-3;
+            text-align: center;
+        }
+    }
+    
+    .apply-ok{
+        font-size:  @font-size-3;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        
+        background-color: @main-color;
+        opacity: 0.8;
+        color: white;
+        padding: 6px;
+    }
+
+    .apply-no{
+        font-size:  @font-size-3;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+
+        background-color: red;
+        opacity: 0.8;
+        color: white;
+        padding: 6px;
+    }
+}
+.order-btn{
+   padding-bottom: 1px;
+}
+
+.card-warning{
+    background-color: white;
+    opacity: 0.8;
+    float: left;
+    width: 40px;
+    color: #666;
+    border-radius: 6px;
+    padding: 6px 6px 6px 6px;
+    font-size:  @font-size-3;
+    text-align: center;
+    border: 1px solid #FF9C34;
+}
+
+.card-flg{
+    background-color: #FF9C34;
+    opacity: 0.8;
+    float: right;
+    margin-right: 10px;
+    width: 40px;
+    color:white;
+    border-radius: 6px;
+    padding: 0px 3px;
+    font-size:  @font-size-3;
+    text-align: center;
+}
+.cancel-order{
+    background-color: #EFEFEF;
+    color: #666;
+    float: right;
+    border-radius: 6px;
+    margin-right: 6px;
+    padding: 6px 8px 6px 8px;
+    font-size:  @font-size-4;
+    text-align: center;
+    border: 1px solid lightgrey;
+}
+.to-pay{
+    background-color: @main-color;
+    color: white;
+    float: right;
+    border-radius: 6px;
+    margin-right: -21px;
+    padding: 6px 10px 6px 10px;
+    font-size:  @font-size-4;
+    text-align: center;
+    border: 1px solid lightgrey;
+}
+
+.del-order{
+    background-color: #EFEFEF;
+    color: red;
+    float: right;
+    border-radius: 6px;
+    margin-right: -21px;
+    padding: 6px 15px 6px 15px;
+    font-size:  @font-size-4;
+    text-align: center;
+    border: 1px solid lightgrey;
+}
+
+.order-again{
+    background-color: #EFEFEF;
+    color: #666;
+    border-radius: 6px;
+    margin-right: 3px;
+    padding: 6px 1px 6px 1px;
+    font-size:  @font-size-4;
+    text-align: center;
+    border: 1px solid lightgrey;
+}
+.del-cel-order {
+    background-color: #EFEFEF;
+    color: red;
+    border-radius: 6px;
+    margin-right: -21px;
+    padding: 6px 1px 6px 1px;
+    font-size:  @font-size-4;
+    text-align: center;
+    border: 1px solid lightgrey;
+}
+
+
+.order-warn{
+    color: red;
+}

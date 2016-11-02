@@ -1,0 +1,101 @@
+@import "./Vars";
+
+.rent-page{
+
+    background-color: #eee;
+    padding-bottom: 20px;
+
+    .rent-item{
+        padding: 8px 16px;
+        background-color: white;
+    }
+
+     .rent-item-box{
+         display: flex;
+
+        .rent-item-img{
+            height: 64;
+            margin-right: 8;
+            margin-top:12;
+        }
+
+        .rent-item-des{
+            font-size: 14;
+            color: #999;
+        }
+
+        .rent-item-price{
+            
+            .price-text{
+                font-size: 20;
+                color: #FF6E27;
+            }
+        }
+    }
+
+    .btn-detail{
+        font-size:  @font-size-3;
+        position: relative;
+        width: 60px;
+        background-color: @main-color;
+        opacity: 0.8;
+        color: white;
+        padding: 8px 10px;
+        text-align: center;
+        float: right;
+    }
+
+
+    .am-list-thumb{
+        img{
+            width: 30px;
+            height: 30px;
+        }
+    } 
+
+    .btn-setting{
+        font-size: @font-size-6;
+        font-size: 20px;
+        height: 44px;
+        line-height: 44px;
+        margin-top: 20px;
+        margin-bottom: 150px;
+    }
+
+    .am-list .am-list-item.am-input-item{
+        text-align: center;
+        height: 25px;
+    }
+    .am-list .am-list-item{
+    
+        .am-input-control input{
+            text-align: center;
+            font-size: @font-size-5;
+        }
+
+        .am-input-clear{
+            font-size:@font-size-5;
+            width:25px;
+            height: 25px;
+            background-size:25px;
+        }
+    }
+
+    .am-image-picker{
+        background-color: white;
+
+        .am-image-picker-list .am-image-picker-item .am-image-picker-item-remove{
+            display: none;
+            width: 15px;
+            height: 15px;
+            background-size:15px;
+            top:4px;
+            right: 4px;
+        }
+
+        .am-image-picker-upload-btn{
+            display: none;
+        }
+    }
+}
+

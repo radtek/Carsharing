@@ -1,0 +1,18 @@
+{
+
+  "plugins": [
+    [
+      "antd",
+      {
+        "libraryName": "antd-mobile"
+      }
+    ],
+    [
+      "transform-runtime",
+      {
+        "polyfill": false,
+        "regenerator": true
+      }
+    ]
+  ]
+}
