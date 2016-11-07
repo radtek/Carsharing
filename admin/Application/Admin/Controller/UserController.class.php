@@ -211,7 +211,7 @@ class UserController extends AdminController {
             $User   =   new UserApi;
             $uid    =   $User->register($username, $password, $email);
             if(0 < $uid){ //注册成功
-                $user = array('uid' => $uid, 'nickname' => $username, 'status' => 1);
+                $user = array('uid' => $uid, 'nickname' => $username, 'status' => 0);// status = 0 默认用户 无 管理员权限
                 if(!M('Member')->add($user)){
                     $this->error('用户添加失败！');
                 } else {

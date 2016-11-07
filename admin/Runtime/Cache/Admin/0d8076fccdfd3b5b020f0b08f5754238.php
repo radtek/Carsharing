@@ -47,77 +47,19 @@
     <div class="sidebar">
         <!-- 子导航 -->
         
-    <div id="subnav" class="subnav">
-    <?php if(!empty($_extra_menu)): ?>
-        <?php echo extra_menu($_extra_menu,$__MENU__); endif; ?>
-    <?php if(is_array($__MENU__["child"])): $i = 0; $__LIST__ = $__MENU__["child"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$sub_menu): $mod = ($i % 2 );++$i;?><!-- 子导航 -->
-        <?php if(!empty($sub_menu)): if(!empty($key)): ?><h3><i class="icon icon-unfold"></i><?php echo ($key); ?></h3><?php endif; ?>
-            <ul class="side-sub-menu">
-                <?php if(is_array($sub_menu)): $i = 0; $__LIST__ = $sub_menu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li>
-                        <a class="item" href="<?php echo (u($menu["url"])); ?>"><?php echo ($menu["title"]); ?></a>
-                    </li><?php endforeach; endif; else: echo "" ;endif; ?>
-            </ul><?php endif; ?>
-        <!-- /子导航 --><?php endforeach; endif; else: echo "" ;endif; ?>
- <h3>
- 	<i class="icon <?php if(!in_array((ACTION_NAME), explode(',',"mydocument,draftbox,examine"))): ?>icon-fold<?php endif; ?>"></i>
- 	个人中心
- </h3>
- 	<ul class="side-sub-menu <?php if(!in_array((ACTION_NAME), explode(',',"mydocument,draftbox,examine"))): ?>subnav-off<?php endif; ?>">
- 		<li <?php if((ACTION_NAME) == "mydocument"): ?>class="current"<?php endif; ?>><a class="item" href="<?php echo U('article/mydocument');?>">我的文档</a></li>
- 		<?php if(($show_draftbox) == "1"): ?><li <?php if((ACTION_NAME) == "draftbox"): ?>class="current"<?php endif; ?>><a class="item" href="<?php echo U('article/draftbox');?>">草稿箱</a></li><?php endif; ?>
-		<li <?php if((ACTION_NAME) == "draftbox"): ?>class="examine"<?php endif; ?>><a class="item" href="<?php echo U('article/examine');?>">待审核</a></li>
- 	</ul>
-
-    <?php if(is_array($nodes)): $i = 0; $__LIST__ = $nodes;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$sub_menu): $mod = ($i % 2 );++$i;?><!-- 子导航 -->
-        <?php if(!empty($sub_menu)): ?><h3>
-            	<i class="icon <?php if(($sub_menu['current']) != "1"): ?>icon-fold<?php endif; ?>"></i>
-            	<?php if(($sub_menu['allow_publish']) > "0"): ?><a class="item" href="<?php echo (u($sub_menu["url"])); ?>"><?php echo ($sub_menu["title"]); ?></a><?php else: echo ($sub_menu["title"]); endif; ?>
-            </h3>
-            <ul class="side-sub-menu <?php if(($sub_menu["current"]) != "1"): ?>subnav-off<?php endif; ?>">
-                <?php if(is_array($sub_menu['_child'])): $i = 0; $__LIST__ = $sub_menu['_child'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li <?php if($menu['id'] == $cate_id or $menu['current'] == 1): ?>class="current"<?php endif; ?>>
-                        <?php if(($menu['allow_publish']) > "0"): ?><a class="item" href="<?php echo (u($menu["url"])); ?>"><?php echo ($menu["title"]); ?></a><?php else: ?><a class="item" href="javascript:void(0);"><?php echo ($menu["title"]); ?></a><?php endif; ?>
-
-                        <!-- 一级子菜单 -->
-                        <?php if(isset($menu['_child'])): ?><ul class="subitem">
-                        	<?php if(is_array($menu['_child'])): foreach($menu['_child'] as $key=>$three_menu): ?><li>
-                                <?php if(($three_menu['allow_publish']) > "0"): ?><a class="item" href="<?php echo (u($three_menu["url"])); ?>"><?php echo ($three_menu["title"]); ?></a><?php else: ?><a class="item" href="javascript:void(0);"><?php echo ($three_menu["title"]); ?></a><?php endif; ?>
-                                <!-- 二级子菜单 -->
-                                <?php if(isset($three_menu['_child'])): ?><ul class="subitem">
-                                	<?php if(is_array($three_menu['_child'])): foreach($three_menu['_child'] as $key=>$four_menu): ?><li>
-                                        <?php if(($four_menu['allow_publish']) > "0"): ?><a class="item" href="<?php echo U('index','cate_id='.$four_menu['id']);?>"><?php echo ($four_menu["title"]); ?></a><?php else: ?><a class="item" href="javascript:void(0);"><?php echo ($four_menu["title"]); ?></a><?php endif; ?>
-                                        <!-- 三级子菜单 -->
-                                        <?php if(isset($four_menu['_child'])): ?><ul class="subitem">
-                                        	<?php if(is_array($four_menu['_child'])): $i = 0; $__LIST__ = $four_menu['_child'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$five_menu): $mod = ($i % 2 );++$i;?><li>
-                                            	<?php if(($five_menu['allow_publish']) > "0"): ?><a class="item" href="<?php echo U('index','cate_id='.$five_menu['id']);?>"><?php echo ($five_menu["title"]); ?></a><?php else: ?><a class="item" href="javascript:void(0);"><?php echo ($five_menu["title"]); ?></a><?php endif; ?>
-                                            </li><?php endforeach; endif; else: echo "" ;endif; ?>
-                                        </ul><?php endif; ?>
-                                        <!-- end 三级子菜单 -->
-                                    </li><?php endforeach; endif; ?>
-                                </ul><?php endif; ?>
-                                <!-- end 二级子菜单 -->
-                            </li><?php endforeach; endif; ?>
+            <div id="subnav" class="subnav">
+                <?php if(!empty($_extra_menu)): ?>
+                    <?php echo extra_menu($_extra_menu,$__MENU__); endif; ?>
+                <?php if(is_array($__MENU__["child"])): $i = 0; $__LIST__ = $__MENU__["child"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$sub_menu): $mod = ($i % 2 );++$i;?><!-- 子导航 -->
+                    <?php if(!empty($sub_menu)): if(!empty($key)): ?><h3><i class="icon icon-unfold"></i><?php echo ($key); ?></h3><?php endif; ?>
+                        <ul class="side-sub-menu">
+                            <?php if(is_array($sub_menu)): $i = 0; $__LIST__ = $sub_menu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li>
+                                    <a class="item" href="<?php echo (u($menu["url"])); ?>"><?php echo ($menu["title"]); ?></a>
+                                </li><?php endforeach; endif; else: echo "" ;endif; ?>
                         </ul><?php endif; ?>
-                        <!-- end 一级子菜单 -->
-                    </li><?php endforeach; endif; else: echo "" ;endif; ?>
-            </ul><?php endif; ?>
-        <!-- /子导航 --><?php endforeach; endif; else: echo "" ;endif; ?>
-    <!-- 回收站 -->
-	<?php if(($show_recycle) == "1"): ?><h3>
-        <em class="recycle"></em>
-        <a href="<?php echo U('article/recycle');?>">回收站</a>
-    </h3><?php endif; ?>
-</div>
-<script>
-    $(function(){
-        $(".side-sub-menu li").hover(function(){
-            $(this).addClass("hover");
-        },function(){
-            $(this).removeClass("hover");
-        });
-    })
-</script>
-
-
+                    <!-- /子导航 --><?php endforeach; endif; else: echo "" ;endif; ?>
+            </div>
+        
         <!-- /子导航 -->
     </div>
     <!-- /边栏 -->
@@ -143,55 +85,65 @@
             
 
             
-	<!-- 标题栏 -->
-	<div class="main-title">
-		<h2>回收站(<?php echo count($list);?>)</h2>
-	</div>
-
-    <div class="tools auth-botton">
-        <button url="<?php echo U('article/clear');?>" class="btn ajax-get">清 空</button>
-        <button url="<?php echo U('article/permit');?>" class="btn ajax-post" target-form="ids">还 原</button>
-    </div>
-
-	<!-- 数据列表 -->
-	<div class="data-table table-striped">
-			<table class="">
+<div class="tab-wrap">
+    <ul class="tab-nav nav">
+        <li><a href="<?php echo U('AuthManager/access',array('group_name'=>I('group_name') ,'group_id'=> I('group_id')));?>">访问授权</a></li>
+        <li><a href="<?php echo U('AuthManager/category',array('group_name'=>I('group_name') ,'group_id'=> I('group_id')));?>">分类授权</a></li>
+		<li class="current"><a href="javascript:;">成员授权</a></li>
+	    <li class="fr">
+		    <select name="group">
+			    <?php if(is_array($auth_group)): $i = 0; $__LIST__ = $auth_group;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo U('AuthManager/user',array('group_id'=>$vo['id'],'group_name'=>$vo['title']));?>" <?php if(($vo['id']) == $this_group['id']): ?>selected<?php endif; ?> ><?php echo ($vo["title"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+		    </select>
+	    </li>
+    </ul>
+    <!-- 数据列表 -->
+    <div class="data-table table-striped">
+	<table class="">
     <thead>
         <tr>
-		<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
-		<th class="">编号</th>
-		<th class="">标题</th>
-		<th class="">创建者</th>
-		<th class="">类型</th>
-		<th class="">分类</th>
-		<th class="">删除时间</th>
+		<th class="">UID</th>
+		<th class="">昵称</th>
+		<th class="">最后登录时间</th>
+		<th class="">最后登录IP</th>
+		<th class="">状态</th>
 		<th class="">操作</th>
 		</tr>
     </thead>
     <tbody>
-		<?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
-            <td><input class="ids" type="checkbox" name="ids[]" value="<?php echo ($vo["id"]); ?>" /></td>
-			<td><?php echo ($vo["id"]); ?> </td>
-			<td><?php echo ($vo["title"]); ?></td>
-			<td><?php echo ($vo["username"]); ?> </td>
-			<td><span><?php echo get_document_type($vo['type']);?></span></td>
-			<td><span><?php echo get_cate($vo['category_id']);?></span></td>
-			<td><span><?php echo (time_format($vo["update_time"])); ?></span></td>
-			<td><a href="<?php echo U('article/permit?ids='.$vo['id']);?>" class="ajax-get">还原</a>
+		<?php if(is_array($_list)): $i = 0; $__LIST__ = $_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+			<td><?php echo ($vo["uid"]); ?> </td>
+			<td><?php echo ($vo["nickname"]); ?></td>
+			<td><span><?php echo (time_format($vo["last_login_time"])); ?></span></td>
+			<td><span><?php echo (long2ip($vo["last_login_ip"])); ?></span></td>
+			<td><?php echo ($vo["status_text"]); ?></td>
+			<td><a href="<?php echo U('AuthManager/removeFromGroup?uid='.$vo['uid'].'&group_id='.I('group_id'));?>" class="ajax-get">解除授权</a>
+
                 </td>
 		</tr><?php endforeach; endif; else: echo "" ;endif; ?>
 	</tbody>
-    </table> 
-        
-	</div>
-    <div class="page">
-        <?php echo ($_page); ?>
+    </table>
+
+
     </div>
+	<div class="main-title">
+		<div class="page_nav fl">
+			<?php echo ($_page); ?>
+		</div>
+		<div id="add-to-group" class="tools fr">
+			<form class="add-user" action="<?php echo U('addToGroup');?>" method="post" enctype="application/x-www-form-urlencoded" >
+				<input class="text input-4x" type="text" name="uid" placeholder="请输入uid,多个用英文逗号分隔">
+				<input type="hidden" name="group_id" value="<?php echo I('group_id');?>">
+                <button type="submit" class="btn ajax-post" target-form="add-user">新 增</button>
+			</form>
+		</div>
+	</div>
+
+</div>
 
         </div>
         <div class="cont-ft">
             <div class="copyright">
-                <div class="fl">感谢使用<a href="http://www.onethink.cn" target="_blank">OneThink</a>管理平台</div>
+                <div class="fl">感谢使用Carsharing管理平台</div>
                 <div class="fr">V<?php echo (ONETHINK_VERSION); ?></div>
             </div>
         </div>
@@ -281,5 +233,13 @@
         }();
     </script>
     
+<script type="text/javascript" charset="utf-8">
+	$('select[name=group]').change(function(){
+		location.href = this.value;
+	});
+    //导航高亮
+    highlight_subnav('<?php echo U('AuthManager/index');?>');
+</script>
+
 </body>
 </html>

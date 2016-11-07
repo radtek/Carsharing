@@ -32,22 +32,22 @@ export default React.createClass({
 
                 card.statusStr = (<span>
                                       <span className="to-pay">去付款</span>
-                                      <span className="cancel-order">取消订单</span>
+                                      <span className="cancel-order">取消</span>
                                   </span>);
             }
             // 已付款的订单
             if (card.status === "1") {
                 strSts = "已付款";
 
-                card.statusStr = (<span className="del-order">删除订单</span>);
+                card.statusStr = (<span className="del-order">删除</span>);
             }
             // 已取消的订单
             if (card.status === "2") {
                 strSts = "已取消";
 
                 card.statusStr = (<span>
-                                      <span className="order-again">再来订单</span>
-                                      <span className="del-cel-order">删除订单</span>
+                                      <span className="order-again">再次约车</span>
+                                      <span className="del-cel-order">删除</span>
                                   </span>);
             }
 

@@ -6,6 +6,7 @@
 html,body {
 	font: 14px/1.5 "microsoft yahei", Helvetica, Tahoma, Arial, sans-serif;
 	color:#404040;
+	background-color: #f6f6f6;
 }
 body,p,pre,blockquote,
 h1,h2,h3,h4,h5,h6,			
@@ -52,7 +53,7 @@ input::-moz-focus-inner {
 /* 布局样式 */
 .cf,.nav,.container-span {
 	*zoom: 1;
-	padding-top: 20px;
+	margin-top: 30px;
 }
 .cf:before, .cf:after,
 .nav:before, .nav:after,

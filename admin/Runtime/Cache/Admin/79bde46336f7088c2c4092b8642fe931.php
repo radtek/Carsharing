@@ -27,11 +27,4 @@
 			<span>文档模型</span>
 		</dd>
 	</dl>
-	<!--<dl class="show-num-mod">
-		<dt><i class="count-icon category-count-icon"></i></dt>
-		<dd>
-			<strong><?php echo ($info["category"]); ?></strong>
-			<span>分类数</span>
-		</dd>
-	</dl>-->
 </div>

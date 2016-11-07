@@ -70,67 +70,68 @@ let Login = React.createClass({
         console.log("--------- 验证登陆:参数 ----------");
         console.log(str);
 
-        // 发送json请求 , 并 返回数据
-        jquery.getJSON(postURL + '/api/appLogin/condition/' + str,
-            function (data) {
-                let user = JSON.parse(data);
-
-                console.log("--------- 验证登陆:返回结果 ----------");
-                console.log(user);
-
-                if (user.success === 1) {
-
-                    Toast.success('登陆成功！', 2);
-                    // 传递数据到App其他功能
-                    dispatch(checkLogin({name: userName, pwd: password}));
-                    // 页面跳转
-                    router.push("/home");
-
-                } else if (user.result === -2) {
-                    Toast.fail('密码错误！', 2);
-
-                } else {
-                    Toast.fail('账号不存在！', 2);
-                }
-
-            }
-        );
-        //let flg = false;
-        //for (let i = 0; i < Users.length; i++) {
-        //    let m = Users[i];
-        //    if (userName === m.name && password === m.pwd) {
-        //        flg = true;
-        //        break;
+        // 发送json请求 , 并 返回数据 ---功能 OK ---
+        //jquery.getJSON(postURL + '/appuser/appLogin/condition/' + str,
+        //    function (data) {
+        //        let user = JSON.parse(data);
+        //
+        //        console.log("--------- 验证登陆:返回结果 ----------");
+        //        console.log(user);
+        //
+        //        if (user.success === 1) {
+        //
+        //            Toast.success('登陆成功！', 2);
+        //            // 传递数据到App其他功能
+        //            dispatch(checkLogin({name: userName, pwd: password, uid: user.result}));
+        //            // 页面跳转
+        //            router.push("/home");
+        //
+        //        } else if (user.result === -2) {
+        //            Toast.fail('密码错误！', 2);
+        //
+        //        } else {
+        //            Toast.fail('账号不存在！', 2);
+        //        }
+        //
         //    }
-        //}
-        //if (flg) {
-        //    Toast.success('登陆成功！', 2);
-        //
-        //    //fetch('/admin/index.php?s=/admin/api/login/user/' + str, {
-        //    //    method: 'POST',
-        //    //    headers: new Headers({
-        //    //        'Accept': 'application/json',
-        //    //        "Content-Type": "application/json;charset=UTF-8"
-        //    //    })
-        //    //})
-        //    //    .then((response) => response.text())
-        //    //    .then((responseText) => {
-        //    //        console.log("-----success----");
-        //    //        console.log(responseText)
-        //    //        console.log(JSON.parse(responseText));
-        //    //    })
-        //    //    .catch((err) => {
-        //    //        console.log("-----error----");
-        //    //        console.log(err);
-        //    //    });
-        //
-        //    dispatch(checkLogin({name: userName, pwd: password}));
-        //
-        //    this.context.router.push("/home");
-        //}
-        //else {
-        //    Toast.fail('用户名或密码错误，请重试！', 2);
-        //}
+        //);
+
+        let flg = false;
+        for (let i = 0; i < Users.length; i++) {
+            let m = Users[i];
+            if (userName === m.name && password === m.pwd) {
+                flg = true;
+                break;
+            }
+        }
+        if (flg) {
+            Toast.success('登陆成功！', 2);
+
+            //fetch('/admin/index.php?s=/admin/api/login/user/' + str, {
+            //    method: 'POST',
+            //    headers: new Headers({
+            //        'Accept': 'application/json',
+            //        "Content-Type": "application/json;charset=UTF-8"
+            //    })
+            //})
+            //    .then((response) => response.text())
+            //    .then((responseText) => {
+            //        console.log("-----success----");
+            //        console.log(responseText)
+            //        console.log(JSON.parse(responseText));
+            //    })
+            //    .catch((err) => {
+            //        console.log("-----error----");
+            //        console.log(err);
+            //    });
+
+            dispatch(checkLogin({name: userName, pwd: password}));
+
+            this.context.router.push("/home");
+        }
+        else {
+            Toast.fail('用户名或密码错误，请重试！', 2);
+        }
     }
 
 });

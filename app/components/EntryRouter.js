@@ -22,6 +22,11 @@ import MapTo from './mine/nowbooking/MapTo';
 // 我的路线
 import MyLineHomeMap from './mine/myline/MyLineHomeMap';
 import MyLineOfficeMap from './mine/myline/MyLineOfficeMap';
+// 顺风旅游
+import TravelFrom from './home/gotravel/MapTravelFrom';
+import TravelTo from './home/gotravel/MapTravelTo';
+
+import CityFrom from './home/gotravel/CityFrom';
 
 export default React.createClass({
 
@@ -58,6 +63,9 @@ export default React.createClass({
 
                 <Route path="/mapfrom" component={MapFrom}/>
                 <Route path="/mapto" component={MapTo}/>
+
+                <Route path="/travelfrom" component={TravelFrom}/>
+                <Route path="/travelto" component={TravelTo}/>
 
                 <Route path="/" component={App}>
                     <IndexRedirect to="login"/>

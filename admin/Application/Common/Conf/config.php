@@ -19,7 +19,7 @@ return array(
     //'MODULE_ALLOW_LIST'  => array('Home','Admin'),
 
     /* 系统数据加密设置 */
-    'DATA_AUTH_KEY' => '#ev}T>!I0x%2akKNp3FL)@B;i?1H:"fA_/]PS+Zb', //默认数据加密KEY
+    'DATA_AUTH_KEY' => 'F]NaoSlghCQ<|U)1(8BjX-nEAmYyt!_u/v5+xIq0', //默认数据加密KEY
 
     /* 调试配置 */
     'SHOW_PAGE_TRACE' => true,
@@ -40,11 +40,11 @@ return array(
     /* 数据库配置 */
     'DB_TYPE'   => 'mysql', // 数据库类型
     'DB_HOST'   => '127.0.0.1', // 服务器地址
-    'DB_NAME'   => 'carsharing', // 数据库名
+    'DB_NAME'   => 'car_sharing', // 数据库名
     'DB_USER'   => 'root', // 用户名
     'DB_PWD'    => '456123',  // 密码
     'DB_PORT'   => '3306', // 端口
-    'DB_PREFIX' => 'cs_', // 数据库表前缀
+    'DB_PREFIX' => 'car_', // 数据库表前缀
 
     /* 文档模型配置 (文档模型核心配置，请勿更改) */
     'DOCUMENT_MODEL_TYPE' => array(2 => '主题', 1 => '目录', 3 => '段落'),

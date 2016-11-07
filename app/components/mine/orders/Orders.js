@@ -45,28 +45,28 @@ export default React.createClass({
                     <List.Body className="order-btn">
                         <List.Item
                             onClick={() => {this.goTo("allorder")}}
-                            thumb="../../images/icon/user.png" arrow="horizontal" extra={all}>
+                            thumb="../images/icon/office.png" arrow="horizontal" extra={all}>
                             全部</List.Item>
                     </List.Body>
 
                     <List.Body className="order-btn">
                         <List.Item
                             onClick={() => {this.goTo("topayorder")}}
-                            thumb="../../images/icon/home.png" arrow="horizontal" extra={topay}>
+                            thumb="../images/icon/time_001.png" arrow="horizontal" extra={topay}>
                             待付款</List.Item>
                     </List.Body>
 
                     <List.Body className="order-btn">
                         <List.Item
                             onClick={() => {this.goTo("orderok")}}
-                            thumb="../../images/icon/auth.png" arrow="horizontal" extra={payok}>
+                            thumb="../images/icon/auth.png" arrow="horizontal" extra={payok}>
                             已付款</List.Item>
                     </List.Body>
 
                     <List.Body>
                         <List.Item
                             onClick={() => {this.goTo("ordercancel")}}
-                            thumb="../images/icon/time.png" arrow="horizontal" extra={cancel}>
+                            thumb="../images/icon/purchase_order.png" arrow="horizontal" extra={cancel}>
                             已取消</List.Item>
                     </List.Body>
 

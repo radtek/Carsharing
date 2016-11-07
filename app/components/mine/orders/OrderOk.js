@@ -57,7 +57,7 @@ export default React.createClass({
                         </Card.Body>
 
                         <Card.Footer content={extra_str}
-                                     extra={ <span className="del-order">删除订单</span>}/>
+                                     extra={ <span className="del-order">删除</span>}/>
                     </Card>);
             }
         }

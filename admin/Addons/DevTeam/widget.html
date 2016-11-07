@@ -22,10 +22,10 @@
 					</tr>
 					<tr>
 						<th>官方网址</th>
-						<td><a href="http://www.onethink.cn" target="_blank">www.onethink.cn</a></td>
+						<td></td>
 					</tr>
 					<tr>
-						<th>官方群</th>
+						<th>官方QQ群</th>
 						<td></td>
 					</tr>
 					<tr>

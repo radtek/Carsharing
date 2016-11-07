@@ -17,7 +17,7 @@ export default React.createClass({
         </Flex>
 
         <Flex className="Grid-row">
-          <FunItem data-image="../images/icon/msg.png" data-to="msg">站内消息</FunItem>
+          <FunItem data-image="../images/icon/travel.png" data-to="scenic">顺风旅游</FunItem>
           <FunItem data-image="../images/icon/auth2.png" data-to="auth">司机认证</FunItem>
           <FunItem data-image="../images/icon/car.png" data-to="mappage">你开我车</FunItem>
         </Flex>

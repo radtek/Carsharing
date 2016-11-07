@@ -2,8 +2,8 @@
  * Created by wang on 2016/10/9.
  */
 import { combineReducers } from 'redux'
-import { CHECK_LOGIN,
-    TO_MSG_DETAIL,
+import { CHECK_LOGIN,TO_MGT_DETAIL,
+    TO_MSG_DETAIL,TRAVEL_FROM,TRAVEL_TO,
     GOOFFICE_HOME_ADDR,GOHOME_HOME_ADDR,FROM_ADDRESS,MY_LINE_HOME_ADDR,
     GOOFFICE_OFFICE_ADDR,GOHOME_OFFICE_ADDR,TO_ADDRESS,MY_LINE_OFFICE_ADDR
      } from '../actions/actions'
@@ -22,7 +22,7 @@ function login(state = [], action) {
             return [
                 ...state,
                 {
-                    userName: action.text.name,
+                    data: action.text,
                     completed: false
                 }
 
@@ -185,6 +185,60 @@ function myLineOfficeAddress(state = [], action) {
     }
 }
 
+// 顺风旅游  获取 出发地址
+function travelFrom(state = [], action) {
+
+    switch (action.type) {
+
+        case TRAVEL_FROM:
+            return [
+                ...state,
+                {
+                    data: action.text,
+                    completed: false
+                }
+            ]
+        default:
+            return state
+    }
+}
+// 顺风旅游  获取 目的地景点
+function travelTo(state = [], action) {
+
+    switch (action.type) {
+
+        case TRAVEL_TO:
+            return [
+                ...state,
+                {
+                    data: action.text,
+                    completed: false
+                }
+            ]
+        default:
+            return state
+    }
+}
+
+// 编辑个人资料 区别 是哪些信息
+function toMgtDetail(state = [], action) {
+
+    switch (action.type) {
+
+        case TO_MGT_DETAIL:
+            return [
+                ...state,
+                {
+                    data: action.text,
+                    completed: false
+                }
+            ]
+        default:
+            return state
+    }
+}
+
+
 const todoApp = combineReducers({
     login,
     message,
@@ -196,6 +250,9 @@ const todoApp = combineReducers({
     toAddress,
     myLineHomeAddress,
     myLineOfficeAddress,
+    travelTo,
+    travelFrom,
+    toMgtDetail,
 })
 
 export default todoApp

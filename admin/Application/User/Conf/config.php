@@ -14,6 +14,6 @@
 
 define('UC_APP_ID', 1); //应用ID
 define('UC_API_TYPE', 'Model'); //可选值 Model / Service
-define('UC_AUTH_KEY', '#ev}T>!I0x%2akKNp3FL)@B;i?1H:"fA_/]PS+Zb'); //加密KEY
-define('UC_DB_DSN', 'mysql://root:456123@127.0.0.1:3306/carsharing'); // 数据库连接，使用Model方式调用API必须配置此项
-define('UC_TABLE_PREFIX', 'cs_'); // 数据表前缀，使用Model方式调用API必须配置此项
+define('UC_AUTH_KEY', 'F]NaoSlghCQ<|U)1(8BjX-nEAmYyt!_u/v5+xIq0'); //加密KEY
+define('UC_DB_DSN', 'mysql://root:456123@127.0.0.1:3306/car_sharing'); // 数据库连接，使用Model方式调用API必须配置此项
+define('UC_TABLE_PREFIX', 'car_'); // 数据表前缀，使用Model方式调用API必须配置此项

@@ -11,7 +11,6 @@ html {
 }
 body{
     padding: 50px 0 0 200px;
-    background-color: #f6f6f6;
 }
 .header {
     position: fixed;
@@ -28,8 +27,8 @@ body{
     margin-left: 16px;
     width: 184px;
     height: 49px;
-    font-size: 22px;
     color: white;
+    font-size: 25px;
     text-align: center;
     /*background: url(../images/bg_icon.png) no-repeat 0 -45px;*/
 }
@@ -626,15 +625,15 @@ body{
 .cont-ft {
     padding: 0 15px;
     background-color: #f6f6f6;
-    width: 100%;
-    position: fixed;
-    bottom: 0px;
 }
 .copyright {
     height: 39px;
     line-height: 39px;
     text-align: center;
     border-top: 1px solid #ccc;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
 }
 .copyright a {
     margin: 0 4px;

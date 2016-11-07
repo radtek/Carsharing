@@ -22,7 +22,7 @@ const minTime = moment('00:30 +0800', 'HH:mm Z').utcOffset(8);
 
 const gmtNow = moment().utcOffset(0);
 
-let Auth = React.createClass({
+let Mine = React.createClass({
 
     contextTypes: {
         router: React.PropTypes.object
@@ -40,34 +40,27 @@ let Auth = React.createClass({
     render() {
 
         const { getFieldProps } = this.props.form;
-
         //console.log("-----登陆用户-----");
         //console.log(this.props.loginUser);
         let users = this.props.loginUser;
-        let userName = users[0] ? users[users.length - 1].userName : "";
-        //console.log("-----登陆用户-----");
+        let user = users[0] ? users[users.length - 1].data : null;
+        let nameStr = user === null ? "TEST" : user.name;
 
         return (
             <div className="rent-page">
 
                 <List >
                     <List.Body>
-                        <List.Item arrow="horizontal"
-                                   extra={<div>{userName} <img src='../images/icon/male.png' /></div>}>
+                        <List.Item
+                            onClick={() => {this.goTo("infomanage")}}
+                            arrow="horizontal"
+                            extra={<div>{nameStr} <img src='../images/icon/male.png' /></div>}>
                             姓名：
                         </List.Item>
 
-
-                        <DatePicker
-                            mode="date"
-                            title="出生日期"
-                            {...getFieldProps('birthday', {
-                                initialValue: initDate,
-                            })}
-                            minDate={minDate}>
-                            <List.Item arrow="horizontal">出生日期：</List.Item>
-                        </DatePicker>
-
+                        <List.Item extra={<div className="username-mgt">189****1234</div>}>
+                            手机号码：
+                        </List.Item>
 
                     </List.Body>
 
@@ -116,11 +109,10 @@ let Auth = React.createClass({
 });
 
 
-Auth = createForm()(Auth);
+Mine = createForm()(Mine);
 function select(state) {
     return {
-        loginUser: state.login,
-        visibilityFilter: ""
+        loginUser: state.login
     };
 }
-export default connect(select)(Auth);
+export default connect(select)(Mine);

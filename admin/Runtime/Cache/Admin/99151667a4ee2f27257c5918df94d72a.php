@@ -85,59 +85,43 @@
             
 
             
-	<!-- 标题栏 -->
-	<div class="main-title">
-		<h2>行为列表</h2>
-	</div>
+<div class="tab-wrap">
+    <ul class="tab-nav nav">
+        <li><a href="<?php echo U('AuthManager/access',array('group_name'=>I('group_name') ,'group_id'=> I('group_id')));?>">访问授权</a></li>
+        <li class="current"><a href="javascript:;">分类授权</a></li>
+		<li><a href="<?php echo U('AuthManager/user',array('group_name'=>I('group_name') ,'group_id'=> I('group_id')));?>">成员授权</a></li>
+	    <li class="fr">
+		    <select name="group">
+			    <?php if(is_array($auth_group)): $i = 0; $__LIST__ = $auth_group;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo U('AuthManager/category',array('group_id'=>$vo['id'],'group_name'=>$vo['title']));?>" <?php if(($vo['id']) == $this_group['id']): ?>selected<?php endif; ?> ><?php echo ($vo["title"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+		    </select>
+	    </li>
+    </ul>
+    <!-- 表格列表 -->
+    <div class="tb-unit posr">
+        <form class="save-category" action="<?php echo U('AuthManager/addToCategory');?>" method="post" enctype="application/x-www-form-urlencoded">
+            <input type="hidden" name="group_id" value="<?php echo I('group_id');?>">
+            <div class="category auth-category">
+                <div class="hd cf">
+                    <div class="fold">折叠</div>
+                    <div class="order">选择</div>
+                    <div class="name">栏目名称</div>
+                </div>
+                <?php echo R('AuthManager/tree', array($group_list));?>
+            </div>
 
-    <div>
-        <button class="btn" id="action_add" url="<?php echo U('user/addaction');?>">新 增</button>
-        <button class="btn ajax-post" target-form="ids" url="<?php echo u('setstatus',array('status'=>1));?>" >启 用</button>
-        <button class="btn ajax-post" target-form="ids" url="<?php echo u('setstatus',array('status'=>0));?>">禁 用</button>
-        <button class="btn ajax-post confirm" target-form="ids" url="<?php echo U('setStatus',array('status'=>-1));?>">删 除</button>
+            <div class="tb-unit-bar">
+                <button class="btn submit-btn ajax-post" type="submit" target-form="save-category">确 定</button>
+                <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+            </div>
+        </form>
     </div>
-	<!-- 数据列表 -->
-	<div class="data-table">
-<table class="">
-    <thead>
-        <tr>
-		<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
-		<th class="">编号</th>
-		<th class="">标识</th>
-		<th class="">名称</th>
-		<th class="">类型</th>
-		<th class="">规则</th>
-		<th class="">状态</th>
-		<th class="">操作</th>
-		</tr>
-    </thead>
-    <tbody>
-		<?php if(is_array($_list)): $i = 0; $__LIST__ = $_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
-            <td><input class="ids" type="checkbox" name="ids[]" value="<?php echo ($vo["id"]); ?>" /></td>
-			<td><?php echo ($vo["id"]); ?> </td>
-			<td><?php echo ($vo["name"]); ?></td>
-			<td><a href="<?php echo U('editAction?id='.$vo['id']);?>"><?php echo ($vo["title"]); ?></a></td>
-			<td><span><?php echo get_action_type($vo['type']);?></span></td>
-			<td><?php echo ($vo["remark"]); ?></td>
-			<td><?php echo ($vo["status_text"]); ?></td>
-			<td><a href="<?php echo U('User/editAction?id='.$vo['id']);?>">编辑</a>
-				<a href="<?php echo U('User/setStatus?Model=action&ids='.$vo['id'].'&status='.abs(1-$vo['status']));?>" class="ajax-get"><?php echo (show_status_op($vo["status"])); ?></a>
-				<a href="<?php echo U('User/setStatus?Model=action&status=-1&ids='.$vo['id']);?>" class="confirm ajax-get">删除</a>
-                </td>
-		</tr><?php endforeach; endif; else: echo "" ;endif; ?>
-	</tbody>
-    </table>
-
-	</div>
-	<!-- 分页 -->
-	<div class="page"><?php echo ($_page); ?></div>
-	<!-- /分页 -->
-
+</div>
+<!-- /表格列表 -->
 
         </div>
         <div class="cont-ft">
             <div class="copyright">
-                <div class="fl">感谢使用<a href="http://www.onethink.cn" target="_blank">OneThink</a>管理平台</div>
+                <div class="fl">感谢使用Carsharing管理平台</div>
                 <div class="fr">V<?php echo (ONETHINK_VERSION); ?></div>
             </div>
         </div>
@@ -228,11 +212,34 @@
     </script>
     
 <script type="text/javascript">
-$(function(){
-	$("#action_add").click(function(){
-		window.location.href = $(this).attr('url');
-	})
-})
+    +function($){
+        /* 分类展开收起 */
+        $(".category dd").prev().find(".fold i").addClass("icon-unfold")
+            .click(function(){
+                var self = $(this);
+                if(self.hasClass("icon-unfold")){
+                    self.closest("dt").next().slideUp("fast", function(){
+                        self.removeClass("icon-unfold").addClass("icon-fold");
+                    });
+                } else {
+                    self.closest("dt").next().slideDown("fast", function(){
+                        self.removeClass("icon-fold").addClass("icon-unfold");
+                    });
+                }
+            });
+
+        var auth_groups = [<?php echo ($authed_group); ?>];
+        $('.cate_id').each(function(){
+            if( $.inArray( parseInt(this.value,10),auth_groups )>-1 ){
+                $(this).prop('checked',true);
+            }
+        });
+	    $('select[name=group]').change(function(){
+		    location.href = this.value;
+	    });
+    }(jQuery);
+    //导航高亮
+    highlight_subnav('<?php echo U('AuthManager/index');?>');
 </script>
 
 </body>

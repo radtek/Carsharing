@@ -20,6 +20,11 @@ export const MY_LINE_OFFICE_ADDR ='MY_LINE_OFFICE_ADDR';
 export const FROM_ADDRESS = 'FROM_ADDRESS';
 export const TO_ADDRESS ='TO_ADDRESS';
 
+export const TRAVEL_FROM = 'TRAVEL_FROM';
+export const TRAVEL_TO ='TRAVEL_TO';
+
+export const TO_MGT_DETAIL ='TO_MGT_DETAIL';
+
 /*
  * 其它的常量
  */
@@ -69,3 +74,16 @@ export function fromAddress(text) {
 export function toAddress(text) {
     return {type: TO_ADDRESS, text}
 };
+// 顺风旅游
+export function travelFrom(text) {
+    return {type: TRAVEL_FROM, text}
+};
+export function travelTo(text) {
+    return {type: TRAVEL_TO, text}
+};
+
+// 编辑个人资料 区别 是哪些信息
+export function toMgtDetail(text) {
+    return {type: TO_MGT_DETAIL, text}
+};
+

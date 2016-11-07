@@ -85,7 +85,7 @@
         </div>
         <div class="cont-ft">
             <div class="copyright">
-                <div class="fl">感谢使用<a href="http://www.onethink.cn" target="_blank">OneThink</a>管理平台</div>
+                <div class="fl">感谢使用Carsharing管理平台</div>
                 <div class="fr">V<?php echo (ONETHINK_VERSION); ?></div>
             </div>
         </div>
@@ -185,7 +185,7 @@
     })
     $(function(){
         // $('#main').attr({'id': 'indexMain','class': 'index-main'});
-        $('.copyright').html('<div class="copyright"> ©2016 Volvo版权所有</div>');
+        $('.copyright').html('<div class="copyright"> ©2016 沃尔沃版权所有</div>');
         $('.sidebar').remove();
     })
 </script>
